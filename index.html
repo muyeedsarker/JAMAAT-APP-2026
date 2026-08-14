@@ -1,1 +1,344 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#166534">
+
+  <title>JAMAAT-APP-2026</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #17202a;
+      padding-bottom: 75px;
+    }
+
+    header {
+      background: #166534;
+      color: white;
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .welcome h2 {
+      color: #166534;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 18px 12px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .card:active {
+      transform: scale(.97);
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .section {
+      background: white;
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+
+    .section h2 {
+      font-size: 18px;
+      color: #166534;
+      margin-bottom: 12px;
+    }
+
+    .notice {
+      border-left: 4px solid #166534;
+      background: #f0fdf4;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .notice small {
+      color: #6b7280;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stat {
+      background: #f0fdf4;
+      padding: 12px 5px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      color: #166534;
+    }
+
+    .stat span {
+      font-size: 11px;
+      color: #555;
+    }
+
+    .help-btn {
+      width: 100%;
+      border: none;
+      background: #166534;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 65px;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    nav a.active {
+      color: #166534;
+      font-weight: bold;
+    }
+
+    nav span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 11px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>JAMAAT-APP-2026</h1>
+    <p>News • Notice • Help Center • Services</p>
+  </header>
+
+  <main class="container">
+
+    <div class="welcome">
+      <h2>স্বাগতম</h2>
+      <p>
+        সংগঠন ও কমিউনিটি তথ্য ব্যবস্থাপনার জন্য
+        এই PWA prototype তৈরি করা হয়েছে।
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" onclick="showMessage('News & Notice')">
+        <div class="icon">📰</div>
+        <h3>News & Notice</h3>
+        <p>সর্বশেষ সংবাদ ও নোটিশ</p>
+      </div>
+
+      <div class="card" onclick="showMessage('Gallery')">
+        <div class="icon">🖼️</div>
+        <h3>ছবি / Gallery</h3>
+        <p>ছবি ও মিডিয়া</p>
+      </div>
+
+      <div class="card" onclick="showMessage('Notifications')">
+        <div class="icon">🔔</div>
+        <h3>Notification</h3>
+        <p>গুরুত্বপূর্ণ আপডেট</p>
+      </div>
+
+      <div class="card" onclick="showMessage('Help Center')">
+        <div class="icon">🆘</div>
+        <h3>Help Center</h3>
+        <p>সহায়তা ও যোগাযোগ</p>
+      </div>
+
+      <div class="card" onclick="showMessage('Services')">
+        <div class="icon">🤝</div>
+        <h3>সহযোগিতা সেবা</h3>
+        <p>সেবা ও সহায়তা</p>
+      </div>
+
+      <div class="card" onclick="showMessage('Organization')">
+        <div class="icon">🗂️</div>
+        <h3>Organization</h3>
+        <p>ইউনিট ও কাঠামো</p>
+      </div>
+
+    </div>
+
+    <section class="section">
+      <h2>📢 সর্বশেষ নোটিশ</h2>
+
+      <div class="notice">
+        <strong>নতুন নোটিশ</strong>
+        <small>গুরুত্বপূর্ণ তথ্য এখানে প্রদর্শিত হবে।</small>
+      </div>
+
+      <div class="notice">
+        <strong>সাধারণ ঘোষণা</strong>
+        <small>সর্বশেষ আপডেট এখানে যুক্ত করা যাবে।</small>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <h2>📊 তথ্যচিত্র</h2>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <strong>0</strong>
+          <span>News</span>
+        </div>
+
+        <div class="stat">
+          <strong>0</strong>
+          <span>Notice</span>
+        </div>
+
+        <div class="stat">
+          <strong>0</strong>
+          <span>Services</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <h2>🆘 দ্রুত সহায়তা</h2>
+
+      <button class="help-btn" onclick="showMessage('Help Center খুলছে...')">
+        Help Center খুলুন
+      </button>
+
+    </section>
+
+    <footer>
+      JAMAAT-APP-2026 • PWA Prototype
+    </footer>
+
+  </main>
+
+  <nav>
+    <a href="#" class="active">
+      <span>🏠</span>
+      Home
+    </a>
+
+    <a href="#" onclick="showMessage('News')">
+      <span>📰</span>
+      News
+    </a>
+
+    <a href="#" onclick="showMessage('Notice')">
+      <span>📢</span>
+      Notice
+    </a>
+
+    <a href="#" onclick="showMessage('Help')">
+      <span>🆘</span>
+      Help
+    </a>
+  </nav>
+
+  <script>
+    function showMessage(message) {
+      alert(message + "\n\nএই ফিচারটি পরবর্তী ধাপে যুক্ত করা হবে।");
+    }
+  </script>
+
+</body>
+</html>ল
