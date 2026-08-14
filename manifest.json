@@ -1,1 +1,24 @@
-
+{
+  "name": "JAMAAT-APP-2026",
+  "short_name": "JAMAAT APP",
+  "description": "News, Notice, Help Center ও কমিউনিটি তথ্য ব্যবস্থাপনার PWA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#166534",
+  "orientation": "portrait",
+  "lang": "bn",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
