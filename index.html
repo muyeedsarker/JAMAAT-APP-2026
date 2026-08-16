@@ -25,7 +25,6 @@
       padding-bottom: 78px;
     }
 
-    /* Header */
     header {
       background: linear-gradient(135deg, #07552d, #168348);
       color: white;
@@ -65,14 +64,12 @@
       opacity: .85;
     }
 
-    /* Main */
     .container {
       max-width: 720px;
       margin: auto;
       padding: 16px;
     }
 
-    /* Welcome */
     .welcome {
       background: white;
       padding: 18px;
@@ -94,7 +91,6 @@
       color: #555;
     }
 
-    /* Emergency */
     .emergency {
       background: #fff7ed;
       border: 1px solid #fed7aa;
@@ -140,7 +136,6 @@
       color: white;
     }
 
-    /* Menu */
     .section-title {
       color: #126b3a;
       font-size: 19px;
@@ -184,7 +179,6 @@
       line-height: 1.4;
     }
 
-    /* Notice */
     .section {
       background: white;
       padding: 17px;
@@ -223,7 +217,6 @@
       line-height: 1.5;
     }
 
-    /* Statistics */
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -248,7 +241,6 @@
       font-size: 10px;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 25px 10px 15px;
@@ -261,7 +253,6 @@
       color: #126b3a;
     }
 
-    /* Bottom Nav */
     nav {
       position: fixed;
       left: 0;
@@ -295,9 +286,7 @@
       margin-bottom: 2px;
     }
 
-    /* Small screen */
     @media (max-width: 360px) {
-
       header h1 {
         font-size: 23px;
       }
@@ -323,12 +312,8 @@
 
 <body>
 
-  <!-- HEADER -->
   <header>
-
-    <div class="logo">
-      🕌
-    </div>
+    <div class="logo">🕌</div>
 
     <h1>28 No Ward</h1>
 
@@ -337,13 +322,10 @@
     <p>
       News • Notice • Help Center • Services
     </p>
-
   </header>
-
 
   <main class="container">
 
-    <!-- WELCOME -->
     <section class="welcome">
 
       <h2>স্বাগতম</h2>
@@ -356,8 +338,6 @@
 
     </section>
 
-
-    <!-- EMERGENCY CONTACT -->
     <section class="emergency">
 
       <h3>🚨 জরুরি যোগাযোগ</h3>
@@ -384,8 +364,6 @@
 
     </section>
 
-
-    <!-- MAIN SERVICES -->
     <h2 class="section-title">
       📱 প্রধান সেবা
     </h2>
@@ -406,7 +384,6 @@
 
       </div>
 
-
       <div
         class="card"
         onclick="openFeature('Notice')">
@@ -420,7 +397,6 @@
         </p>
 
       </div>
-
 
       <div
         class="card"
@@ -436,7 +412,6 @@
 
       </div>
 
-
       <div
         class="card"
         onclick="openFeature('Help Center')">
@@ -450,7 +425,6 @@
         </p>
 
       </div>
-
 
       <div
         class="card"
@@ -466,7 +440,6 @@
 
       </div>
 
-
       <div
         class="card"
         onclick="openFeature('Gallery')">
@@ -481,7 +454,6 @@
 
       </div>
 
-
       <div
         class="card"
         onclick="openFeature('Documents')">
@@ -495,7 +467,6 @@
         </p>
 
       </div>
-
 
       <div
         class="card"
@@ -513,8 +484,6 @@
 
     </div>
 
-
-    <!-- LATEST NOTICE -->
     <section class="section">
 
       <h2>
@@ -533,7 +502,6 @@
 
       </div>
 
-
       <div class="notice">
 
         <strong>
@@ -548,8 +516,6 @@
 
     </section>
 
-
-    <!-- STATISTICS -->
     <section class="section">
 
       <h2>
@@ -568,7 +534,6 @@
 
         </div>
 
-
         <div class="stat">
 
           <strong>0</strong>
@@ -578,7 +543,6 @@
           </span>
 
         </div>
-
 
         <div class="stat">
 
@@ -594,8 +558,6 @@
 
     </section>
 
-
-    <!-- ABOUT -->
     <section class="section">
 
       <h2>
@@ -617,8 +579,6 @@
 
     </section>
 
-
-    <!-- FOOTER -->
     <footer>
 
       <strong>
@@ -637,8 +597,6 @@
 
   </main>
 
-
-  <!-- BOTTOM NAVIGATION -->
   <nav>
 
     <a
@@ -650,30 +608,25 @@
 
     </a>
 
-
     <a
-      href="#"
-      onclick="openFeature('News')">
+      href="news.html">
 
       <span>📰</span>
       News
 
     </a>
 
-
     <a
-      href="#"
-      onclick="openFeature('Notice')">
+      href="news.html#notice">
 
       <span>📢</span>
       Notice
 
     </a>
 
-
     <a
       href="#"
-      onclick="openFeature('Contact')">
+      onclick="openFeature('Contact'); return false;">
 
       <span>📞</span>
       Contact
@@ -682,27 +635,34 @@
 
   </nav>
 
-
-  <!-- JAVASCRIPT -->
   <script>
 
     function openFeature(feature) {
 
-      alert(
-        feature +
-        "\n\nএই বিভাগটি পরবর্তী ধাপে সম্পূর্ণভাবে চালু করা হবে।"
-      );
+      if (feature === "News") {
+
+        window.location.href = "news.html";
+
+      }
+
+      else if (feature === "Notice") {
+
+        window.location.href = "news.html#notice";
+
+      }
+
+      else {
+
+        alert(
+          feature +
+          "\n\nএই বিভাগটি পরবর্তী ধাপে সম্পূর্ণভাবে চালু করা হবে।"
+        );
+
+      }
 
     }
 
-
     function makeCall() {
-
-      /*
-        এখানে ভবিষ্যতে অনুমোদিত
-        জরুরি যোগাযোগের নম্বর
-        যুক্ত করা হবে।
-      */
 
       const number = "";
 
@@ -711,7 +671,9 @@
         window.location.href =
           "tel:" + number;
 
-      } else {
+      }
+
+      else {
 
         alert(
           "জরুরি যোগাযোগের নম্বর এখনো যুক্ত করা হয়নি।"
@@ -721,14 +683,7 @@
 
     }
 
-
     function sendSMS() {
-
-      /*
-        ভবিষ্যতে অনুমোদিত
-        জরুরি যোগাযোগের নম্বর
-        এখানে যুক্ত করা হবে।
-      */
 
       const number = "";
 
@@ -737,7 +692,9 @@
         window.location.href =
           "sms:" + number;
 
-      } else {
+      }
+
+      else {
 
         alert(
           "SMS-এর জন্য যোগাযোগ নম্বর এখনো যুক্ত করা হয়নি।"
@@ -746,9 +703,6 @@
       }
 
     }
-
-
-    /* SERVICE WORKER */
 
     if ("serviceWorker" in navigator) {
 
