@@ -179,6 +179,15 @@
       line-height: 1.4;
     }
 
+    .admin-card {
+      background: #fff;
+      border: 2px solid #126b3a;
+    }
+
+    .admin-card .icon {
+      font-size: 29px;
+    }
+
     .section {
       background: white;
       padding: 17px;
@@ -313,7 +322,10 @@
 <body>
 
   <header>
-    <div class="logo">🕌</div>
+
+    <div class="logo">
+      🕌
+    </div>
 
     <h1>28 No Ward</h1>
 
@@ -322,7 +334,9 @@
     <p>
       News • Notice • Help Center • Services
     </p>
+
   </header>
+
 
   <main class="container">
 
@@ -337,6 +351,7 @@
       </p>
 
     </section>
+
 
     <section class="emergency">
 
@@ -364,11 +379,14 @@
 
     </section>
 
+
     <h2 class="section-title">
       📱 প্রধান সেবা
     </h2>
 
+
     <div class="grid">
+
 
       <div
         class="card"
@@ -384,6 +402,7 @@
 
       </div>
 
+
       <div
         class="card"
         onclick="openFeature('Notice')">
@@ -397,6 +416,7 @@
         </p>
 
       </div>
+
 
       <div
         class="card"
@@ -412,6 +432,7 @@
 
       </div>
 
+
       <div
         class="card"
         onclick="openFeature('Help Center')">
@@ -425,6 +446,7 @@
         </p>
 
       </div>
+
 
       <div
         class="card"
@@ -440,6 +462,7 @@
 
       </div>
 
+
       <div
         class="card"
         onclick="openFeature('Gallery')">
@@ -453,6 +476,7 @@
         </p>
 
       </div>
+
 
       <div
         class="card"
@@ -468,6 +492,7 @@
 
       </div>
 
+
       <div
         class="card"
         onclick="openFeature('Units')">
@@ -482,7 +507,24 @@
 
       </div>
 
+
+      <div
+        class="card admin-card"
+        onclick="openAdmin()">
+
+        <div class="icon">🔐</div>
+
+        <h3>Admin Panel</h3>
+
+        <p>
+          News ও Notice Management
+        </p>
+
+      </div>
+
+
     </div>
+
 
     <section class="section">
 
@@ -502,6 +544,7 @@
 
       </div>
 
+
       <div class="notice">
 
         <strong>
@@ -515,6 +558,7 @@
       </div>
 
     </section>
+
 
     <section class="section">
 
@@ -534,6 +578,7 @@
 
         </div>
 
+
         <div class="stat">
 
           <strong>0</strong>
@@ -543,6 +588,7 @@
           </span>
 
         </div>
+
 
         <div class="stat">
 
@@ -557,6 +603,7 @@
       </div>
 
     </section>
+
 
     <section class="section">
 
@@ -579,6 +626,7 @@
 
     </section>
 
+
     <footer>
 
       <strong>
@@ -597,6 +645,7 @@
 
   </main>
 
+
   <nav>
 
     <a
@@ -608,6 +657,7 @@
 
     </a>
 
+
     <a
       href="news.html">
 
@@ -616,6 +666,7 @@
 
     </a>
 
+
     <a
       href="news.html#notice">
 
@@ -623,6 +674,7 @@
       Notice
 
     </a>
+
 
     <a
       href="#"
@@ -634,6 +686,7 @@
     </a>
 
   </nav>
+
 
   <script>
 
@@ -662,6 +715,14 @@
 
     }
 
+
+    function openAdmin() {
+
+      window.location.href = "admin.html";
+
+    }
+
+
     function makeCall() {
 
       const number = "";
@@ -683,6 +744,7 @@
 
     }
 
+
     function sendSMS() {
 
       const number = "";
@@ -703,6 +765,7 @@
       }
 
     }
+
 
     if ("serviceWorker" in navigator) {
 
