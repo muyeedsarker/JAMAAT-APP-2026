@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#166534">
-  <meta name="description" content="JAMAAT-APP-2026 — News, Notice, Help Center ও কমিউনিটি তথ্য ব্যবস্থাপনার PWA">
+  <meta name="theme-color" content="#126b3a">
+  <meta name="description" content="28 No Ward — News, Notice, Help Center, Services and Information">
 
   <link rel="manifest" href="./manifest.json">
 
-  <title>JAMAAT-APP-2026</title>
+  <title>28 No Ward</title>
 
   <style>
     * {
@@ -20,110 +20,191 @@
     }
 
     body {
-      background: #f3f4f6;
+      background: #f4f7f5;
       color: #17202a;
-      padding-bottom: 75px;
+      padding-bottom: 78px;
     }
 
+    /* Header */
     header {
-      background: #166534;
+      background: linear-gradient(135deg, #07552d, #168348);
       color: white;
-      padding: 20px 16px;
+      padding: 24px 16px 22px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.15);
+    }
+
+    .logo {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 10px;
+      border-radius: 20px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.18);
     }
 
     header h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
+      font-size: 27px;
+      margin-bottom: 5px;
+    }
+
+    header h2 {
+      font-size: 18px;
+      font-weight: normal;
+      opacity: .95;
+      margin-bottom: 8px;
     }
 
     header p {
-      font-size: 13px;
-      opacity: .9;
+      font-size: 12px;
+      opacity: .85;
     }
 
+    /* Main */
     .container {
-      max-width: 700px;
+      max-width: 720px;
       margin: auto;
       padding: 16px;
     }
 
+    /* Welcome */
     .welcome {
       background: white;
-      border-radius: 14px;
       padding: 18px;
+      border-radius: 18px;
+      margin-top: -5px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
     }
 
     .welcome h2 {
-      color: #166534;
-      margin-bottom: 8px;
+      color: #126b3a;
       font-size: 20px;
+      margin-bottom: 8px;
     }
 
     .welcome p {
-      line-height: 1.7;
       font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* Emergency */
+    .emergency {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 18px;
+    }
+
+    .emergency h3 {
+      color: #c2410c;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .emergency p {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .contact-buttons button {
+      flex: 1;
+      border: none;
+      padding: 11px 5px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .call {
+      background: #15803d;
+      color: white;
+    }
+
+    .sms {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* Menu */
+    .section-title {
+      color: #126b3a;
+      font-size: 19px;
+      margin: 20px 0 12px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 11px;
     }
 
     .card {
       background: white;
-      padding: 18px 12px;
-      border-radius: 14px;
+      padding: 17px 10px;
+      border-radius: 16px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
       cursor: pointer;
-      transition: .2s;
+      transition: .15s;
+      border: 1px solid #edf1ee;
     }
 
     .card:active {
-      transform: scale(.97);
+      transform: scale(.96);
     }
 
-    .icon {
-      font-size: 30px;
-      margin-bottom: 8px;
+    .card .icon {
+      font-size: 29px;
+      margin-bottom: 7px;
     }
 
     .card h3 {
-      font-size: 15px;
-      margin-bottom: 5px;
+      font-size: 14px;
+      margin-bottom: 4px;
     }
 
     .card p {
-      font-size: 12px;
-      color: #6b7280;
+      color: #777;
+      font-size: 11px;
+      line-height: 1.4;
     }
 
+    /* Notice */
     .section {
       background: white;
-      padding: 16px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      padding: 17px;
+      border-radius: 17px;
+      margin-top: 18px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
     }
 
     .section h2 {
+      color: #126b3a;
       font-size: 18px;
-      color: #166534;
-      margin-bottom: 12px;
+      margin-bottom: 13px;
     }
 
     .notice {
-      border-left: 4px solid #166534;
       background: #f0fdf4;
+      border-left: 4px solid #168348;
       padding: 12px;
-      margin-bottom: 10px;
       border-radius: 8px;
+      margin-bottom: 9px;
     }
 
     .notice:last-child {
@@ -132,15 +213,18 @@
 
     .notice strong {
       display: block;
+      font-size: 14px;
       margin-bottom: 5px;
     }
 
     .notice small {
-      color: #6b7280;
+      color: #666;
+      font-size: 11px;
       line-height: 1.5;
     }
 
-    .stat-grid {
+    /* Statistics */
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
@@ -148,79 +232,78 @@
 
     .stat {
       background: #f0fdf4;
-      padding: 12px 5px;
+      padding: 13px 5px;
       text-align: center;
-      border-radius: 10px;
+      border-radius: 11px;
     }
 
     .stat strong {
       display: block;
-      font-size: 20px;
-      color: #166534;
+      color: #126b3a;
+      font-size: 21px;
     }
 
     .stat span {
+      color: #666;
+      font-size: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px 10px 15px;
+      color: #777;
       font-size: 11px;
-      color: #555;
+      line-height: 1.6;
     }
 
-    .help-btn {
-      width: 100%;
-      border: none;
-      background: #166534;
-      color: white;
-      padding: 14px;
-      border-radius: 10px;
-      font-size: 15px;
-      cursor: pointer;
+    footer strong {
+      color: #126b3a;
     }
 
-    .help-btn:active {
-      transform: scale(.98);
-    }
-
+    /* Bottom Nav */
     nav {
       position: fixed;
-      bottom: 0;
       left: 0;
       right: 0;
-      height: 65px;
+      bottom: 0;
+      height: 68px;
       background: white;
       border-top: 1px solid #ddd;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      z-index: 100;
+      z-index: 999;
+      box-shadow: 0 -3px 12px rgba(0,0,0,.08);
     }
 
     nav a {
+      color: #666;
       text-decoration: none;
-      color: #555;
       text-align: center;
-      font-size: 11px;
+      font-size: 10px;
     }
 
     nav a.active {
-      color: #166534;
+      color: #126b3a;
       font-weight: bold;
     }
 
     nav span {
       display: block;
-      font-size: 22px;
+      font-size: 21px;
       margin-bottom: 2px;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 11px;
-    }
-
+    /* Small screen */
     @media (max-width: 360px) {
+
       header h1 {
-        font-size: 21px;
+        font-size: 23px;
+      }
+
+      header h2 {
+        font-size: 16px;
       }
 
       .grid {
@@ -228,7 +311,11 @@
       }
 
       .card {
-        padding: 15px 8px;
+        padding: 14px 7px;
+      }
+
+      .stats {
+        gap: 5px;
       }
     }
   </style>
@@ -236,187 +323,466 @@
 
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
-    <h1>JAMAAT-APP-2026</h1>
-    <p>News • Notice • Help Center • Services</p>
+
+    <div class="logo">
+      🕌
+    </div>
+
+    <h1>28 No Ward</h1>
+
+    <h2>২৮ নং ওয়ার্ড</h2>
+
+    <p>
+      News • Notice • Help Center • Services
+    </p>
+
   </header>
+
 
   <main class="container">
 
-    <!-- Welcome -->
-    <div class="welcome">
-      <h2>স্বাগতম</h2>
-      <p>
-        সংগঠন ও কমিউনিটি তথ্য ব্যবস্থাপনার জন্য
-        এই PWA prototype তৈরি করা হয়েছে।
-      </p>
-    </div>
+    <!-- WELCOME -->
+    <section class="welcome">
 
-    <!-- Main Menu -->
+      <h2>স্বাগতম</h2>
+
+      <p>
+        ২৮ নং ওয়ার্ডের প্রয়োজনীয় তথ্য, সংবাদ,
+        নোটিশ, যোগাযোগ ও সেবা এক জায়গায় পাওয়ার
+        জন্য এই ডিজিটাল প্ল্যাটফর্ম।
+      </p>
+
+    </section>
+
+
+    <!-- EMERGENCY CONTACT -->
+    <section class="emergency">
+
+      <h3>🚨 জরুরি যোগাযোগ</h3>
+
+      <p>
+        অনুমোদিত জরুরি যোগাযোগ নম্বরে দ্রুত Call অথবা SMS করুন।
+      </p>
+
+      <div class="contact-buttons">
+
+        <button
+          class="call"
+          onclick="makeCall()">
+          ☎️ Call
+        </button>
+
+        <button
+          class="sms"
+          onclick="sendSMS()">
+          💬 SMS
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- MAIN SERVICES -->
+    <h2 class="section-title">
+      📱 প্রধান সেবা
+    </h2>
+
     <div class="grid">
 
-      <div class="card" onclick="showMessage('News & Notice')">
+      <div
+        class="card"
+        onclick="openFeature('News')">
+
         <div class="icon">📰</div>
-        <h3>News & Notice</h3>
-        <p>সর্বশেষ সংবাদ ও নোটিশ</p>
+
+        <h3>News</h3>
+
+        <p>
+          সর্বশেষ সংবাদ
+        </p>
+
       </div>
 
-      <div class="card" onclick="showMessage('Gallery')">
-        <div class="icon">🖼️</div>
-        <h3>ছবি / Gallery</h3>
-        <p>ছবি ও মিডিয়া</p>
+
+      <div
+        class="card"
+        onclick="openFeature('Notice')">
+
+        <div class="icon">📢</div>
+
+        <h3>Notice</h3>
+
+        <p>
+          গুরুত্বপূর্ণ নোটিশ
+        </p>
+
       </div>
 
-      <div class="card" onclick="showMessage('Notifications')">
-        <div class="icon">🔔</div>
-        <h3>Notification</h3>
-        <p>গুরুত্বপূর্ণ আপডেট</p>
+
+      <div
+        class="card"
+        onclick="openFeature('Contact')">
+
+        <div class="icon">📞</div>
+
+        <h3>যোগাযোগ</h3>
+
+        <p>
+          Call ও SMS
+        </p>
+
       </div>
 
-      <div class="card" onclick="showMessage('Help Center')">
+
+      <div
+        class="card"
+        onclick="openFeature('Help Center')">
+
         <div class="icon">🆘</div>
+
         <h3>Help Center</h3>
-        <p>সহায়তা ও যোগাযোগ</p>
+
+        <p>
+          সহায়তা ও নির্দেশনা
+        </p>
+
       </div>
 
-      <div class="card" onclick="showMessage('Services')">
+
+      <div
+        class="card"
+        onclick="openFeature('Services')">
+
         <div class="icon">🤝</div>
-        <h3>সহযোগিতা সেবা</h3>
-        <p>সেবা ও সহায়তা</p>
+
+        <h3>সেবা</h3>
+
+        <p>
+          প্রয়োজনীয় সেবা
+        </p>
+
       </div>
 
-      <div class="card" onclick="showMessage('Organization')">
+
+      <div
+        class="card"
+        onclick="openFeature('Gallery')">
+
+        <div class="icon">🖼️</div>
+
+        <h3>Gallery</h3>
+
+        <p>
+          ছবি ও মিডিয়া
+        </p>
+
+      </div>
+
+
+      <div
+        class="card"
+        onclick="openFeature('Documents')">
+
+        <div class="icon">📂</div>
+
+        <h3>Documents</h3>
+
+        <p>
+          প্রয়োজনীয় ডকুমেন্ট
+        </p>
+
+      </div>
+
+
+      <div
+        class="card"
+        onclick="openFeature('Units')">
+
         <div class="icon">🗂️</div>
-        <h3>Organization</h3>
-        <p>ইউনিট ও কাঠামো</p>
+
+        <h3>Units</h3>
+
+        <p>
+          ইউনিট তথ্য
+        </p>
+
       </div>
 
     </div>
 
-    <!-- Notice -->
+
+    <!-- LATEST NOTICE -->
     <section class="section">
-      <h2>📢 সর্বশেষ নোটিশ</h2>
+
+      <h2>
+        📢 সর্বশেষ নোটিশ
+      </h2>
 
       <div class="notice">
-        <strong>নতুন নোটিশ</strong>
+
+        <strong>
+          গুরুত্বপূর্ণ ঘোষণা
+        </strong>
+
         <small>
-          গুরুত্বপূর্ণ তথ্য এখানে প্রদর্শিত হবে।
+          নতুন নোটিশ প্রকাশিত হলে এখানে দেখা যাবে।
         </small>
+
       </div>
+
 
       <div class="notice">
-        <strong>সাধারণ ঘোষণা</strong>
+
+        <strong>
+          সাধারণ তথ্য
+        </strong>
+
         <small>
-          সর্বশেষ আপডেট এখানে যুক্ত করা যাবে।
+          প্রয়োজনীয় তথ্য ও আপডেট এখানে যুক্ত করা হবে।
         </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="section">
+
+      <h2>
+        📊 তথ্যচিত্র
+      </h2>
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <strong>0</strong>
+
+          <span>
+            News
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>0</strong>
+
+          <span>
+            Notice
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>0</strong>
+
+          <span>
+            Services
+          </span>
+
+        </div>
+
       </div>
 
     </section>
 
-    <!-- Statistics -->
+
+    <!-- ABOUT -->
     <section class="section">
-      <h2>📊 তথ্যচিত্র</h2>
 
-      <div class="stat-grid">
+      <h2>
+        ℹ️ অ্যাপ সম্পর্কে
+      </h2>
 
-        <div class="stat">
-          <strong>0</strong>
-          <span>News</span>
-        </div>
+      <p
+        style="
+        color:#666;
+        font-size:13px;
+        line-height:1.7;
+        ">
 
-        <div class="stat">
-          <strong>0</strong>
-          <span>Notice</span>
-        </div>
+        ২৮ নং ওয়ার্ডের তথ্য ও সেবা ব্যবস্থাপনাকে
+        সহজ, দ্রুত এবং আধুনিক করার উদ্দেশ্যে
+        এই PWA তৈরি করা হচ্ছে।
 
-        <div class="stat">
-          <strong>0</strong>
-          <span>Services</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Help -->
-    <section class="section">
-      <h2>🆘 দ্রুত সহায়তা</h2>
-
-      <button
-        class="help-btn"
-        onclick="showMessage('Help Center খুলছে...')">
-        Help Center খুলুন
-      </button>
+      </p>
 
     </section>
 
-    <!-- Footer -->
+
+    <!-- FOOTER -->
     <footer>
-      JAMAAT-APP-2026 • PWA Prototype
+
+      <strong>
+        28 No Ward
+      </strong>
+
+      <br>
+
+      News • Notice • Help Center • Services
+
+      <br><br>
+
+      create by Muyeed
+
     </footer>
 
   </main>
 
-  <!-- Bottom Navigation -->
+
+  <!-- BOTTOM NAVIGATION -->
   <nav>
 
-    <a href="#" class="active">
+    <a
+      href="#"
+      class="active">
+
       <span>🏠</span>
       Home
+
     </a>
 
-    <a href="#" onclick="showMessage('News')">
+
+    <a
+      href="#"
+      onclick="openFeature('News')">
+
       <span>📰</span>
       News
+
     </a>
 
-    <a href="#" onclick="showMessage('Notice')">
+
+    <a
+      href="#"
+      onclick="openFeature('Notice')">
+
       <span>📢</span>
       Notice
+
     </a>
 
-    <a href="#" onclick="showMessage('Help')">
-      <span>🆘</span>
-      Help
+
+    <a
+      href="#"
+      onclick="openFeature('Contact')">
+
+      <span>📞</span>
+      Contact
+
     </a>
 
   </nav>
 
-  <!-- Basic JavaScript -->
-  <script>
-    function showMessage(message) {
-      alert(
-        message +
-        "\n\nএই ফিচারটি পরবর্তী ধাপে যুক্ত করা হবে।"
-      );
-    }
-  </script>
 
-  <!-- PWA Service Worker -->
+  <!-- JAVASCRIPT -->
   <script>
+
+    function openFeature(feature) {
+
+      alert(
+        feature +
+        "\n\nএই বিভাগটি পরবর্তী ধাপে সম্পূর্ণভাবে চালু করা হবে।"
+      );
+
+    }
+
+
+    function makeCall() {
+
+      /*
+        এখানে ভবিষ্যতে অনুমোদিত
+        জরুরি যোগাযোগের নম্বর
+        যুক্ত করা হবে।
+      */
+
+      const number = "";
+
+      if (number) {
+
+        window.location.href =
+          "tel:" + number;
+
+      } else {
+
+        alert(
+          "জরুরি যোগাযোগের নম্বর এখনো যুক্ত করা হয়নি।"
+        );
+
+      }
+
+    }
+
+
+    function sendSMS() {
+
+      /*
+        ভবিষ্যতে অনুমোদিত
+        জরুরি যোগাযোগের নম্বর
+        এখানে যুক্ত করা হবে।
+      */
+
+      const number = "";
+
+      if (number) {
+
+        window.location.href =
+          "sms:" + number;
+
+      } else {
+
+        alert(
+          "SMS-এর জন্য যোগাযোগ নম্বর এখনো যুক্ত করা হয়নি।"
+        );
+
+      }
+
+    }
+
+
+    /* SERVICE WORKER */
+
     if ("serviceWorker" in navigator) {
 
-      window.addEventListener("load", () => {
+      window.addEventListener(
+        "load",
+        function () {
 
-        navigator.serviceWorker
-          .register("./sw.js")
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then(
+              function () {
 
-          .then(() => {
-            console.log(
-              "PWA Service Worker registered successfully."
+                console.log(
+                  "Service Worker registered successfully."
+                );
+
+              }
+            )
+            .catch(
+              function (error) {
+
+                console.error(
+                  "Service Worker registration failed:",
+                  error
+                );
+
+              }
             );
-          })
 
-          .catch((error) => {
-            console.error(
-              "Service Worker registration failed:",
-              error
-            );
-          });
-
-      });
+        }
+      );
 
     }
+
   </script>
 
 </body>
