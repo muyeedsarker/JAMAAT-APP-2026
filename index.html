@@ -1,806 +1,803 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#126b3a">
-  <meta name="description" content="28 No Ward — News, Notice, Help Center, Services and Information">
+<meta name="theme-color" content="#126b3a">
+<meta name="description" content="28 No Ward — News, Notice, Help Center, Services and Information">
 
-  <link rel="manifest" href="./manifest.json">
+<link rel="manifest" href="./manifest.json">
 
-  <title>28 No Ward</title>
+<title>28 No Ward</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, "Noto Sans Bengali", sans-serif;
-    }
+<style>
 
-    body {
-      background: #f4f7f5;
-      color: #17202a;
-      padding-bottom: 78px;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
 
-    header {
-      background: linear-gradient(135deg, #07552d, #168348);
-      color: white;
-      padding: 24px 16px 22px;
-      text-align: center;
-      border-radius: 0 0 24px 24px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.15);
-    }
+body{
+  background:#f4f7f5;
+  color:#17202a;
+  padding-bottom:80px;
+}
 
-    .logo {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 10px;
-      border-radius: 20px;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.18);
-    }
+header{
+  background:linear-gradient(135deg,#07552d,#168348);
+  color:white;
+  padding:25px 16px 22px;
+  text-align:center;
+  border-radius:0 0 25px 25px;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
 
-    header h1 {
-      font-size: 27px;
-      margin-bottom: 5px;
-    }
+.logo{
+  width:82px;
+  height:82px;
+  margin:0 auto 10px;
+  border-radius:22px;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
 
-    header h2 {
-      font-size: 18px;
-      font-weight: normal;
-      opacity: .95;
-      margin-bottom: 8px;
-    }
+header h1{
+  font-size:28px;
+  margin-bottom:5px;
+}
 
-    header p {
-      font-size: 12px;
-      opacity: .85;
-    }
+header h2{
+  font-size:18px;
+  font-weight:normal;
+  opacity:.95;
+  margin-bottom:8px;
+}
 
-    .container {
-      max-width: 720px;
-      margin: auto;
-      padding: 16px;
-    }
+header p{
+  font-size:12px;
+  opacity:.85;
+}
 
-    .welcome {
-      background: white;
-      padding: 18px;
-      border-radius: 18px;
-      margin-top: -5px;
-      margin-bottom: 16px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.07);
-    }
+.container{
+  max-width:720px;
+  margin:auto;
+  padding:16px;
+}
 
-    .welcome h2 {
-      color: #126b3a;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
+.welcome{
+  background:white;
+  padding:19px;
+  border-radius:18px;
+  margin-top:-5px;
+  margin-bottom:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
 
-    .welcome p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #555;
-    }
+.welcome h2{
+  color:#126b3a;
+  font-size:20px;
+  margin-bottom:8px;
+}
 
-    .emergency {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 16px;
-      padding: 15px;
-      margin-bottom: 18px;
-    }
+.welcome p{
+  font-size:14px;
+  line-height:1.7;
+  color:#555;
+}
 
-    .emergency h3 {
-      color: #c2410c;
-      margin-bottom: 6px;
-      font-size: 17px;
-    }
+.emergency{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:20px;
+}
 
-    .emergency p {
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 12px;
-    }
+.emergency h3{
+  color:#c2410c;
+  margin-bottom:6px;
+  font-size:17px;
+}
 
-    .contact-buttons {
-      display: flex;
-      gap: 8px;
-    }
+.emergency p{
+  font-size:12px;
+  color:#666;
+  margin-bottom:12px;
+}
 
-    .contact-buttons button {
-      flex: 1;
-      border: none;
-      padding: 11px 5px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-    }
+.contact-buttons{
+  display:flex;
+  gap:8px;
+}
 
-    .call {
-      background: #15803d;
-      color: white;
-    }
+.contact-buttons button{
+  flex:1;
+  border:none;
+  padding:12px 5px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:bold;
+}
 
-    .sms {
-      background: #2563eb;
-      color: white;
-    }
+.call{
+  background:#15803d;
+  color:white;
+}
 
-    .section-title {
-      color: #126b3a;
-      font-size: 19px;
-      margin: 20px 0 12px;
-    }
+.sms{
+  background:#2563eb;
+  color:white;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 11px;
-    }
+.section-title{
+  color:#126b3a;
+  font-size:19px;
+  margin:20px 0 12px;
+}
 
-    .card {
-      background: white;
-      padding: 17px 10px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,.06);
-      cursor: pointer;
-      transition: .15s;
-      border: 1px solid #edf1ee;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+}
 
-    .card:active {
-      transform: scale(.96);
-    }
+.card{
+  background:white;
+  padding:18px 10px;
+  border-radius:17px;
+  text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  cursor:pointer;
+  transition:.15s;
+  border:1px solid #edf1ee;
+}
 
-    .card .icon {
-      font-size: 29px;
-      margin-bottom: 7px;
-    }
+.card:active{
+  transform:scale(.96);
+}
 
-    .card h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
+.card .icon{
+  font-size:30px;
+  margin-bottom:7px;
+}
 
-    .card p {
-      color: #777;
-      font-size: 11px;
-      line-height: 1.4;
-    }
+.card h3{
+  font-size:14px;
+  margin-bottom:4px;
+}
 
-    .admin-card {
-      background: #fff;
-      border: 2px solid #126b3a;
-    }
+.card p{
+  color:#777;
+  font-size:11px;
+  line-height:1.4;
+}
 
-    .admin-card .icon {
-      font-size: 29px;
-    }
+.admin-card{
+  background:#f0fdf4;
+  border:2px solid #126b3a;
+}
 
-    .section {
-      background: white;
-      padding: 17px;
-      border-radius: 17px;
-      margin-top: 18px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.06);
-    }
+.section{
+  background:white;
+  padding:18px;
+  border-radius:17px;
+  margin-top:18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+}
 
-    .section h2 {
-      color: #126b3a;
-      font-size: 18px;
-      margin-bottom: 13px;
-    }
+.section h2{
+  color:#126b3a;
+  font-size:18px;
+  margin-bottom:13px;
+}
 
-    .notice {
-      background: #f0fdf4;
-      border-left: 4px solid #168348;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 9px;
-    }
+.notice{
+  background:#f0fdf4;
+  border-left:4px solid #168348;
+  padding:13px;
+  border-radius:8px;
+  margin-bottom:9px;
+}
 
-    .notice:last-child {
-      margin-bottom: 0;
-    }
+.notice:last-child{
+  margin-bottom:0;
+}
 
-    .notice strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
+.notice strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:5px;
+}
 
-    .notice small {
-      color: #666;
-      font-size: 11px;
-      line-height: 1.5;
-    }
+.notice small{
+  color:#666;
+  font-size:11px;
+  line-height:1.5;
+}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
 
-    .stat {
-      background: #f0fdf4;
-      padding: 13px 5px;
-      text-align: center;
-      border-radius: 11px;
-    }
+.stat{
+  background:#f0fdf4;
+  padding:14px 5px;
+  text-align:center;
+  border-radius:11px;
+}
 
-    .stat strong {
-      display: block;
-      color: #126b3a;
-      font-size: 21px;
-    }
+.stat strong{
+  display:block;
+  color:#126b3a;
+  font-size:21px;
+}
 
-    .stat span {
-      color: #666;
-      font-size: 10px;
-    }
+.stat span{
+  color:#666;
+  font-size:10px;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px 10px 15px;
-      color: #777;
-      font-size: 11px;
-      line-height: 1.6;
-    }
+.about-text{
+  color:#666;
+  font-size:13px;
+  line-height:1.7;
+}
 
-    footer strong {
-      color: #126b3a;
-    }
+footer{
+  text-align:center;
+  padding:25px 10px 15px;
+  color:#777;
+  font-size:11px;
+  line-height:1.6;
+}
 
-    nav {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 68px;
-      background: white;
-      border-top: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 999;
-      box-shadow: 0 -3px 12px rgba(0,0,0,.08);
-    }
+footer strong{
+  color:#126b3a;
+}
 
-    nav a {
-      color: #666;
-      text-decoration: none;
-      text-align: center;
-      font-size: 10px;
-    }
+nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:68px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:999;
+  box-shadow:0 -3px 12px rgba(0,0,0,.08);
+}
 
-    nav a.active {
-      color: #126b3a;
-      font-weight: bold;
-    }
+nav a{
+  color:#666;
+  text-decoration:none;
+  text-align:center;
+  font-size:10px;
+}
 
-    nav span {
-      display: block;
-      font-size: 21px;
-      margin-bottom: 2px;
-    }
+nav a.active{
+  color:#126b3a;
+  font-weight:bold;
+}
 
-    @media (max-width: 360px) {
-      header h1 {
-        font-size: 23px;
-      }
+nav span{
+  display:block;
+  font-size:21px;
+  margin-bottom:2px;
+}
 
-      header h2 {
-        font-size: 16px;
-      }
+@media(max-width:360px){
 
-      .grid {
-        gap: 8px;
-      }
+  header h1{
+    font-size:23px;
+  }
 
-      .card {
-        padding: 14px 7px;
-      }
+  header h2{
+    font-size:16px;
+  }
 
-      .stats {
-        gap: 5px;
-      }
-    }
-  </style>
+  .grid{
+    gap:8px;
+  }
+
+  .card{
+    padding:14px 7px;
+  }
+
+  .stats{
+    gap:5px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
 
-    <div class="logo">
-      🕌
-    </div>
+<div class="logo">
+🕌
+</div>
 
-    <h1>28 No Ward</h1>
+<h1>28 No Ward</h1>
 
-    <h2>২৮ নং ওয়ার্ড</h2>
+<h2>২৮ নং ওয়ার্ড</h2>
 
-    <p>
-      News • Notice • Help Center • Services
-    </p>
+<p>
+News • Notice • Help Center • Services
+</p>
 
-  </header>
+</header>
 
 
-  <main class="container">
+<main class="container">
 
-    <section class="welcome">
 
-      <h2>স্বাগতম</h2>
+<section class="welcome">
 
-      <p>
-        ২৮ নং ওয়ার্ডের প্রয়োজনীয় তথ্য, সংবাদ,
-        নোটিশ, যোগাযোগ ও সেবা এক জায়গায় পাওয়ার
-        জন্য এই ডিজিটাল প্ল্যাটফর্ম।
-      </p>
+<h2>স্বাগতম</h2>
 
-    </section>
+<p>
+২৮ নং ওয়ার্ডের প্রয়োজনীয় তথ্য, সংবাদ,
+নোটিশ, যোগাযোগ ও সেবা এক জায়গায় পাওয়ার
+জন্য এই ডিজিটাল প্ল্যাটফর্ম।
+</p>
 
+</section>
 
-    <section class="emergency">
 
-      <h3>🚨 জরুরি যোগাযোগ</h3>
+<section class="emergency">
 
-      <p>
-        অনুমোদিত জরুরি যোগাযোগ নম্বরে দ্রুত Call অথবা SMS করুন।
-      </p>
+<h3>🚨 জরুরি যোগাযোগ</h3>
 
-      <div class="contact-buttons">
+<p>
+অনুমোদিত জরুরি যোগাযোগ নম্বরে দ্রুত Call অথবা SMS করুন।
+</p>
 
-        <button
-          class="call"
-          onclick="makeCall()">
-          ☎️ Call
-        </button>
+<div class="contact-buttons">
 
-        <button
-          class="sms"
-          onclick="sendSMS()">
-          💬 SMS
-        </button>
+<button
+class="call"
+onclick="makeCall()">
+☎️ Call
+</button>
 
-      </div>
+<button
+class="sms"
+onclick="sendSMS()">
+💬 SMS
+</button>
 
-    </section>
+</div>
 
+</section>
 
-    <h2 class="section-title">
-      📱 প্রধান সেবা
-    </h2>
 
+<h2 class="section-title">
+📱 প্রধান সেবা
+</h2>
 
-    <div class="grid">
 
+<div class="grid">
 
-      <div
-        class="card"
-        onclick="openFeature('News')">
 
-        <div class="icon">📰</div>
+<div
+class="card"
+onclick="openFeature('News')">
 
-        <h3>News</h3>
+<div class="icon">📰</div>
 
-        <p>
-          সর্বশেষ সংবাদ
-        </p>
+<h3>News</h3>
 
-      </div>
+<p>
+সর্বশেষ সংবাদ
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Notice')">
 
-        <div class="icon">📢</div>
+<div
+class="card"
+onclick="openFeature('Notice')">
 
-        <h3>Notice</h3>
+<div class="icon">📢</div>
 
-        <p>
-          গুরুত্বপূর্ণ নোটিশ
-        </p>
+<h3>Notice</h3>
 
-      </div>
+<p>
+গুরুত্বপূর্ণ নোটিশ
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Contact')">
 
-        <div class="icon">📞</div>
+<div
+class="card"
+onclick="openFeature('Contact')">
 
-        <h3>যোগাযোগ</h3>
+<div class="icon">📞</div>
 
-        <p>
-          Call ও SMS
-        </p>
+<h3>যোগাযোগ</h3>
 
-      </div>
+<p>
+Call ও SMS
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Help Center')">
 
-        <div class="icon">🆘</div>
+<div
+class="card"
+onclick="openFeature('Help Center')">
 
-        <h3>Help Center</h3>
+<div class="icon">🆘</div>
 
-        <p>
-          সহায়তা ও নির্দেশনা
-        </p>
+<h3>Help Center</h3>
 
-      </div>
+<p>
+সহায়তা ও নির্দেশনা
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Services')">
 
-        <div class="icon">🤝</div>
+<div
+class="card"
+onclick="openFeature('Services')">
 
-        <h3>সেবা</h3>
+<div class="icon">🤝</div>
 
-        <p>
-          প্রয়োজনীয় সেবা
-        </p>
+<h3>সেবা</h3>
 
-      </div>
+<p>
+প্রয়োজনীয় সেবা
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Gallery')">
 
-        <div class="icon">🖼️</div>
+<div
+class="card"
+onclick="openFeature('Gallery')">
 
-        <h3>Gallery</h3>
+<div class="icon">🖼️</div>
 
-        <p>
-          ছবি ও মিডিয়া
-        </p>
+<h3>Gallery</h3>
 
-      </div>
+<p>
+ছবি ও মিডিয়া
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Documents')">
 
-        <div class="icon">📂</div>
+<div
+class="card"
+onclick="openFeature('Documents')">
 
-        <h3>Documents</h3>
+<div class="icon">📂</div>
 
-        <p>
-          প্রয়োজনীয় ডকুমেন্ট
-        </p>
+<h3>Documents</h3>
 
-      </div>
+<p>
+প্রয়োজনীয় ডকুমেন্ট
+</p>
 
+</div>
 
-      <div
-        class="card"
-        onclick="openFeature('Units')">
 
-        <div class="icon">🗂️</div>
+<div
+class="card"
+onclick="openFeature('Units')">
 
-        <h3>Units</h3>
+<div class="icon">🗂️</div>
 
-        <p>
-          ইউনিট তথ্য
-        </p>
+<h3>Units</h3>
 
-      </div>
+<p>
+ইউনিট তথ্য
+</p>
 
+</div>
 
-      <div
-        class="card admin-card"
-        onclick="openAdmin()">
 
-        <div class="icon">🔐</div>
+<div
+class="card admin-card"
+onclick="openAdmin()">
 
-        <h3>Admin Panel</h3>
+<div class="icon">🔐</div>
 
-        <p>
-          News ও Notice Management
-        </p>
+<h3>Admin Panel</h3>
 
-      </div>
+<p>
+News ও Notice Management
+</p>
 
+</div>
 
-    </div>
 
+</div>
 
-    <section class="section">
 
-      <h2>
-        📢 সর্বশেষ নোটিশ
-      </h2>
+<section class="section">
 
-      <div class="notice">
+<h2>
+📢 সর্বশেষ নোটিশ
+</h2>
 
-        <strong>
-          গুরুত্বপূর্ণ ঘোষণা
-        </strong>
+<div class="notice">
 
-        <small>
-          নতুন নোটিশ প্রকাশিত হলে এখানে দেখা যাবে।
-        </small>
+<strong>
+গুরুত্বপূর্ণ ঘোষণা
+</strong>
 
-      </div>
+<small>
+নতুন নোটিশ প্রকাশিত হলে এখানে দেখা যাবে।
+</small>
 
+</div>
 
-      <div class="notice">
 
-        <strong>
-          সাধারণ তথ্য
-        </strong>
+<div class="notice">
 
-        <small>
-          প্রয়োজনীয় তথ্য ও আপডেট এখানে যুক্ত করা হবে।
-        </small>
+<strong>
+সাধারণ তথ্য
+</strong>
 
-      </div>
+<small>
+প্রয়োজনীয় তথ্য ও আপডেট এখানে যুক্ত করা হবে।
+</small>
 
-    </section>
+</div>
 
+</section>
 
-    <section class="section">
 
-      <h2>
-        📊 তথ্যচিত্র
-      </h2>
+<section class="section">
 
-      <div class="stats">
+<h2>
+📊 তথ্যচিত্র
+</h2>
 
-        <div class="stat">
+<div class="stats">
 
-          <strong>0</strong>
+<div class="stat">
 
-          <span>
-            News
-          </span>
+<strong>0</strong>
 
-        </div>
+<span>
+News
+</span>
 
+</div>
 
-        <div class="stat">
 
-          <strong>0</strong>
+<div class="stat">
 
-          <span>
-            Notice
-          </span>
+<strong>0</strong>
 
-        </div>
+<span>
+Notice
+</span>
 
+</div>
 
-        <div class="stat">
 
-          <strong>0</strong>
+<div class="stat">
 
-          <span>
-            Services
-          </span>
+<strong>0</strong>
 
-        </div>
+<span>
+Services
+</span>
 
-      </div>
+</div>
 
-    </section>
+</div>
 
+</section>
 
-    <section class="section">
 
-      <h2>
-        ℹ️ অ্যাপ সম্পর্কে
-      </h2>
+<section class="section">
 
-      <p
-        style="
-        color:#666;
-        font-size:13px;
-        line-height:1.7;
-        ">
+<h2>
+ℹ️ অ্যাপ সম্পর্কে
+</h2>
 
-        ২৮ নং ওয়ার্ডের তথ্য ও সেবা ব্যবস্থাপনাকে
-        সহজ, দ্রুত এবং আধুনিক করার উদ্দেশ্যে
-        এই PWA তৈরি করা হচ্ছে।
+<p class="about-text">
 
-      </p>
+২৮ নং ওয়ার্ডের তথ্য ও সেবা ব্যবস্থাপনাকে
+সহজ, দ্রুত এবং আধুনিক করার উদ্দেশ্যে
+এই PWA তৈরি করা হচ্ছে।
 
-    </section>
+</p>
 
+</section>
 
-    <footer>
 
-      <strong>
-        28 No Ward
-      </strong>
+<footer>
 
-      <br>
+<strong>
+28 No Ward
+</strong>
 
-      News • Notice • Help Center • Services
+<br>
 
-      <br><br>
+News • Notice • Help Center • Services
 
-      create by Muyeed
+<br><br>
 
-    </footer>
+Created by Muyeed
 
-  </main>
+</footer>
 
 
-  <nav>
+</main>
 
-    <a
-      href="#"
-      class="active">
 
-      <span>🏠</span>
-      Home
+<nav>
 
-    </a>
+<a
+href="#"
+class="active">
 
+<span>🏠</span>
+Home
 
-    <a
-      href="news.html">
+</a>
 
-      <span>📰</span>
-      News
 
-    </a>
+<a
+href="news.html">
 
+<span>📰</span>
+News
 
-    <a
-      href="news.html#notice">
+</a>
 
-      <span>📢</span>
-      Notice
 
-    </a>
+<a
+href="news.html#notice">
 
+<span>📢</span>
+Notice
 
-    <a
-      href="#"
-      onclick="openFeature('Contact'); return false;">
+</a>
 
-      <span>📞</span>
-      Contact
 
-    </a>
+<a
+href="#"
+onclick="openFeature('Contact');return false;">
 
-  </nav>
+<span>📞</span>
+Contact
 
+</a>
 
-  <script>
+</nav>
 
-    function openFeature(feature) {
 
-      if (feature === "News") {
+<script>
 
-        window.location.href = "news.html";
 
-      }
+function openFeature(feature){
 
-      else if (feature === "Notice") {
+if(feature==="News"){
 
-        window.location.href = "news.html#notice";
+window.location.href="news.html";
 
-      }
+}
 
-      else {
+else if(feature==="Notice"){
 
-        alert(
-          feature +
-          "\n\nএই বিভাগটি পরবর্তী ধাপে সম্পূর্ণভাবে চালু করা হবে।"
-        );
+window.location.href="news.html#notice";
 
-      }
+}
 
-    }
+else{
 
+alert(
+feature+
+"\n\nএই বিভাগটি পরবর্তী ধাপে সম্পূর্ণভাবে চালু করা হবে।"
+);
 
-    function openAdmin() {
+}
 
-      window.location.href = "admin.html";
+}
 
-    }
 
+function openAdmin(){
 
-    function makeCall() {
+window.location.href="admin.html";
 
-      const number = "";
+}
 
-      if (number) {
 
-        window.location.href =
-          "tel:" + number;
+function makeCall(){
 
-      }
+const number="";
 
-      else {
+if(number){
 
-        alert(
-          "জরুরি যোগাযোগের নম্বর এখনো যুক্ত করা হয়নি।"
-        );
+window.location.href="tel:"+number;
 
-      }
+}
 
-    }
+else{
 
+alert(
+"জরুরি যোগাযোগের নম্বর এখনো যুক্ত করা হয়নি।"
+);
 
-    function sendSMS() {
+}
 
-      const number = "";
+}
 
-      if (number) {
 
-        window.location.href =
-          "sms:" + number;
+function sendSMS(){
 
-      }
+const number="";
 
-      else {
+if(number){
 
-        alert(
-          "SMS-এর জন্য যোগাযোগ নম্বর এখনো যুক্ত করা হয়নি।"
-        );
+window.location.href="sms:"+number;
 
-      }
+}
 
-    }
+else{
 
+alert(
+"SMS-এর জন্য যোগাযোগ নম্বর এখনো যুক্ত করা হয়নি।"
+);
 
-    if ("serviceWorker" in navigator) {
+}
 
-      window.addEventListener(
-        "load",
-        function () {
+}
 
-          navigator.serviceWorker
-            .register("./sw.js")
-            .then(
-              function () {
 
-                console.log(
-                  "Service Worker registered successfully."
-                );
+if("serviceWorker" in navigator){
 
-              }
-            )
-            .catch(
-              function (error) {
+window.addEventListener(
+"load",
+function(){
 
-                console.error(
-                  "Service Worker registration failed:",
-                  error
-                );
+navigator.serviceWorker
+.register("./sw.js")
+.then(function(){
 
-              }
-            );
+console.log(
+"Service Worker registered successfully."
+);
 
-        }
-      );
+})
+.catch(function(error){
 
-    }
+console.error(
+"Service Worker registration failed:",
+error
+);
 
-  </script>
+});
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
