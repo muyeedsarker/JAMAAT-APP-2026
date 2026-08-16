@@ -1,1 +1,725 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel - 28 No Ward</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
+
+body{
+  background:#f4f7f5;
+  color:#17202a;
+}
+
+header{
+  background:linear-gradient(135deg,#07552d,#168348);
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+header h1{
+  font-size:25px;
+  margin-bottom:6px;
+}
+
+header p{
+  font-size:13px;
+  opacity:.9;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:18px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.card h2{
+  color:#126b3a;
+  font-size:19px;
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  font-size:13px;
+  margin:12px 0 6px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:14px;
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-btn,
+.publish-btn{
+  background:#126b3a;
+  color:white;
+  width:100%;
+  margin-top:15px;
+}
+
+.delete-btn{
+  background:#dc2626;
+  color:white;
+}
+
+.approve-btn{
+  background:#15803d;
+  color:white;
+}
+
+.logout-btn{
+  background:#555;
+  color:white;
+  width:100%;
+  margin-top:10px;
+}
+
+.item{
+  background:#f8faf9;
+  border-left:4px solid #168348;
+  padding:14px;
+  border-radius:10px;
+  margin-bottom:12px;
+}
+
+.item h3{
+  margin-bottom:7px;
+  font-size:16px;
+}
+
+.item p{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+.item small{
+  color:#888;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.actions button{
+  flex:1;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#fef3c7;
+  color:#92400e;
+  font-size:11px;
+  margin-bottom:8px;
+}
+
+.success{
+  background:#dcfce7;
+  color:#166534;
+  padding:10px;
+  border-radius:9px;
+  font-size:13px;
+  margin-top:12px;
+  display:none;
+}
+
+.hidden{
+  display:none;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  color:#126b3a;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🔐 Admin Panel</h1>
+
+<p>২৮ নং ওয়ার্ড — News & Notice Management</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- LOGIN -->
+
+<section class="card" id="loginBox">
+
+<h2>🔑 Admin Login</h2>
+
+<label>Admin Password</label>
+
+<input
+type="password"
+id="password"
+placeholder="পাসওয়ার্ড লিখুন"
+>
+
+<button
+class="login-btn"
+onclick="login()">
+
+Login
+
+</button>
+
+<div
+id="loginMessage"
+class="success">
+</div>
+
+</section>
+
+
+
+<!-- ADMIN PANEL -->
+
+<div
+id="adminPanel"
+class="hidden">
+
+
+<!-- ADD NEWS / NOTICE -->
+
+<section class="card">
+
+<h2>➕ নতুন News / Notice</h2>
+
+<label>ধরন নির্বাচন করুন</label>
+
+<select id="type">
+
+<option value="News">
+📰 News
+</option>
+
+<option value="Notice">
+📢 Notice
+</option>
+
+</select>
+
+
+<label>শিরোনাম</label>
+
+<input
+type="text"
+id="title"
+placeholder="শিরোনাম লিখুন"
+>
+
+
+<label>প্রকাশের তারিখ</label>
+
+<input
+type="date"
+id="date"
+>
+
+
+<label>বিস্তারিত</label>
+
+<textarea
+id="description"
+placeholder="News বা Notice-এর বিস্তারিত লিখুন">
+</textarea>
+
+
+<button
+class="publish-btn"
+onclick="addItem()">
+
+📤 Approval-এর জন্য Submit
+
+</button>
+
+
+<div
+id="successMessage"
+class="success">
+News/Notice সফলভাবে Approval-এর জন্য জমা হয়েছে।
+</div>
+
+</section>
+
+
+
+<!-- PENDING -->
+
+<section class="card">
+
+<h2>⏳ Pending Approval</h2>
+
+<div id="pendingList">
+
+<p style="color:#777;font-size:13px;">
+কোনো Pending News বা Notice নেই।
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- PUBLISHED -->
+
+<section class="card">
+
+<h2>✅ Published</h2>
+
+<div id="publishedList">
+
+<p style="color:#777;font-size:13px;">
+এখনো কোনো Published News বা Notice নেই।
+</p>
+
+</div>
+
+</section>
+
+
+<button
+class="logout-btn"
+onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+
+<a
+href="index.html"
+class="back">
+
+🏠 Home Dashboard
+
+</a>
+
+</div>
+
+
+
+<script>
+
+const ADMIN_PASSWORD = "123456";
+
+
+function login(){
+
+const password =
+document.getElementById("password").value;
+
+if(password === ADMIN_PASSWORD){
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.getElementById("adminPanel")
+.classList.remove("hidden");
+
+loadItems();
+
+}else{
+
+const msg =
+document.getElementById("loginMessage");
+
+msg.style.display="block";
+
+msg.style.background="#fee2e2";
+
+msg.style.color="#991b1b";
+
+msg.innerText=
+"❌ ভুল Admin Password";
+
+}
+
+}
+
+
+
+function logout(){
+
+location.reload();
+
+}
+
+
+
+function addItem(){
+
+const type =
+document.getElementById("type").value;
+
+const title =
+document.getElementById("title").value.trim();
+
+const date =
+document.getElementById("date").value;
+
+const description =
+document.getElementById("description").value.trim();
+
+
+if(!title || !date || !description){
+
+alert(
+"দয়া করে সব তথ্য পূরণ করুন।"
+);
+
+return;
+
+}
+
+
+const item = {
+
+id:Date.now(),
+
+type:type,
+
+title:title,
+
+date:date,
+
+description:description,
+
+status:"pending"
+
+};
+
+
+let items =
+JSON.parse(
+localStorage.getItem("wardNewsNotice")
+) || [];
+
+
+items.push(item);
+
+
+localStorage.setItem(
+"wardNewsNotice",
+JSON.stringify(items)
+);
+
+
+document.getElementById("title").value="";
+
+document.getElementById("date").value="";
+
+document.getElementById("description").value="";
+
+
+const msg =
+document.getElementById("successMessage");
+
+msg.style.display="block";
+
+setTimeout(function(){
+
+msg.style.display="none";
+
+},3000);
+
+
+loadItems();
+
+}
+
+
+
+function loadItems(){
+
+let items =
+JSON.parse(
+localStorage.getItem("wardNewsNotice")
+) || [];
+
+
+const pending =
+document.getElementById("pendingList");
+
+const published =
+document.getElementById("publishedList");
+
+
+pending.innerHTML="";
+
+published.innerHTML="";
+
+
+const pendingItems =
+items.filter(
+item => item.status === "pending"
+);
+
+
+const publishedItems =
+items.filter(
+item => item.status === "published"
+);
+
+
+
+if(pendingItems.length === 0){
+
+pending.innerHTML =
+'<p style="color:#777;font-size:13px;">কোনো Pending News বা Notice নেই।</p>';
+
+}else{
+
+pendingItems.forEach(function(item){
+
+pending.innerHTML += `
+
+<div class="item">
+
+<span class="status">
+⏳ Pending
+</span>
+
+<h3>
+${item.type === "News" ? "📰" : "📢"}
+${escapeHTML(item.title)}
+</h3>
+
+<small>
+প্রকাশের তারিখ: ${item.date}
+</small>
+
+<p>
+${escapeHTML(item.description)}
+</p>
+
+<div class="actions">
+
+<button
+class="approve-btn"
+onclick="approveItem(${item.id})">
+
+✅ Approve
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteItem(${item.id})">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+
+if(publishedItems.length === 0){
+
+published.innerHTML =
+'<p style="color:#777;font-size:13px;">এখনো কোনো Published News বা Notice নেই।</p>';
+
+}else{
+
+publishedItems.forEach(function(item){
+
+published.innerHTML += `
+
+<div class="item">
+
+<span
+class="status"
+style="background:#dcfce7;color:#166534;">
+
+✅ Published
+
+</span>
+
+<h3>
+${item.type === "News" ? "📰" : "📢"}
+${escapeHTML(item.title)}
+</h3>
+
+<small>
+প্রকাশের তারিখ: ${item.date}
+</small>
+
+<p>
+${escapeHTML(item.description)}
+</p>
+
+<button
+class="delete-btn"
+onclick="deleteItem(${item.id})">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+}
+
+
+
+function approveItem(id){
+
+let items =
+JSON.parse(
+localStorage.getItem("wardNewsNotice")
+) || [];
+
+
+items =
+items.map(function(item){
+
+if(item.id === id){
+
+item.status="published";
+
+}
+
+return item;
+
+});
+
+
+localStorage.setItem(
+"wardNewsNotice",
+JSON.stringify(items)
+);
+
+
+loadItems();
+
+}
+
+
+
+function deleteItem(id){
+
+if(!confirm(
+"আপনি কি এই News/Notice মুছে ফেলতে চান?"
+)){
+
+return;
+
+}
+
+
+let items =
+JSON.parse(
+localStorage.getItem("wardNewsNotice")
+) || [];
+
+
+items =
+items.filter(
+item => item.id !== id
+);
+
+
+localStorage.setItem(
+"wardNewsNotice",
+JSON.stringify(items)
+);
+
+
+loadItems();
+
+}
+
+
+
+function escapeHTML(text){
+
+return text
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
