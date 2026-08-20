@@ -1,5 +1,4 @@
 const PUSH_PUBLIC_KEY = "BC1FvK-ER2a0uXro8S_JuUsAzSBQ0dxrZqEM1kox8s7l1C5J_AY0SYaV5UkhE8SMR-opBgrYey8w0i0dazs9eKQ";
-const PUSH_FUNCTION = "https://pgwxfccpphjjveoeeqhv.supabase.co/functions/v1/send-push";
 
 function pushSupported() {
   return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
@@ -38,12 +37,12 @@ async function registerPushSubscription(showFeedback = true) {
   const db = await supabasePushClient();
   const { data: { user } } = await db.auth.getUser();
   const payload = subscription.toJSON();
-  if (!user || !payload.endpoint || !payload.keys?.p256dh || !payload.keys?.auth) {
-    throw new Error("Push subscription সংরক্ষণের জন্য Auth session প্রয়োজন।");
+  if (!payload.endpoint || !payload.keys?.p256dh || !payload.keys?.auth) {
+    throw new Error("Push subscription তৈরি করা যায়নি।");
   }
 
   const { error } = await db.from("push_subscriptions").upsert({
-    user_id: user.id,
+    user_id: user?.id || null,
     endpoint: payload.endpoint,
     p256dh: payload.keys.p256dh,
     auth: payload.keys.auth,
@@ -61,18 +60,12 @@ async function disablePushSubscription(showFeedback = true) {
   const registration = await navigator.serviceWorker.ready;
   const subscription = await registration.pushManager.getSubscription();
   if (!subscription) return;
-  const endpoint = subscription.endpoint;
   await subscription.unsubscribe();
-  const db = await supabasePushClient();
-  await db.from("push_subscriptions").delete().eq("endpoint", endpoint);
-  if (showFeedback) alert("🔕 Notification বন্ধ করা হয়েছে।");
+  if (showFeedback) alert("🔕 Notification বন্ধ করা হয়েছে। নতুন subscription হলে আবার চালু করা যাবে।");
 }
 
 async function installPushUI() {
   if (!pushSupported()) return;
-  const db = await supabasePushClient();
-  const { data: { session } } = await db.auth.getSession();
-  if (!session) return;
   const registration = await navigator.serviceWorker.ready;
   const active = !!(await registration.pushManager.getSubscription());
   const old = document.getElementById("pushTools");
