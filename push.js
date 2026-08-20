@@ -12,10 +12,7 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 async function supabasePushClient() {
-  const db = window.db || window.supabase?.createClient?.(
-    "https://pgwxfccpphjjveoeeqhv.supabase.co",
-    "sb_publishable_Hi2YfMYdGfGS3al-ojQA9A_6wPEG2ym"
-  );
+  const db = window.db || window.supabase?.createClient?.("https://pgwxfccpphjjveoeeqhv.supabase.co", "sb_publishable_Hi2YfMYdGfGS3al-ojQA9A_6wPEG2ym");
   if (!db) throw new Error("Supabase client not available");
   return db;
 }
@@ -24,44 +21,26 @@ async function registerPushSubscription(showFeedback = true) {
   if (!pushSupported()) throw new Error("এই ব্রাউজারে Push Notification সমর্থিত নয়।");
   const permission = await Notification.requestPermission();
   if (permission !== "granted") throw new Error("Notification permission অনুমোদন করা হয়নি।");
-
   const registration = await navigator.serviceWorker.ready;
   let subscription = await registration.pushManager.getSubscription();
-  if (!subscription) {
-    subscription = await registration.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(PUSH_PUBLIC_KEY)
-    });
-  }
+  if (!subscription) subscription = await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: urlBase64ToUint8Array(PUSH_PUBLIC_KEY) });
 
   const db = await supabasePushClient();
   const { data: { user } } = await db.auth.getUser();
   const payload = subscription.toJSON();
-  if (!payload.endpoint || !payload.keys?.p256dh || !payload.keys?.auth) {
-    throw new Error("Push subscription তৈরি করা যায়নি।");
+  if (!payload.endpoint || !payload.keys?.p256dh || !payload.keys?.auth) throw new Error("Push subscription তৈরি করা যায়নি।");
+
+  const row = { user_id: user?.id || null, endpoint: payload.endpoint, p256dh: payload.keys.p256dh, auth: payload.keys.auth, user_agent: navigator.userAgent, updated_at: new Date().toISOString() };
+  let error;
+  if (user) {
+    ({ error } = await db.from("push_subscriptions").upsert(row, { onConflict: "endpoint" }));
+  } else {
+    ({ error } = await db.from("push_subscriptions").insert(row));
+    if (error?.code === "23505") error = null;
   }
-
-  const { error } = await db.from("push_subscriptions").upsert({
-    user_id: user?.id || null,
-    endpoint: payload.endpoint,
-    p256dh: payload.keys.p256dh,
-    auth: payload.keys.auth,
-    user_agent: navigator.userAgent,
-    updated_at: new Date().toISOString()
-  }, { onConflict: "endpoint" });
   if (error) throw error;
-
   if (showFeedback) alert("🔔 Notification চালু হয়েছে। নতুন News/Notice প্রকাশ হলে জানানো হবে।");
   return subscription;
-}
-
-async function disablePushSubscription(showFeedback = true) {
-  if (!pushSupported()) return;
-  const registration = await navigator.serviceWorker.ready;
-  const subscription = await registration.pushManager.getSubscription();
-  if (!subscription) return;
-  await subscription.unsubscribe();
-  if (showFeedback) alert("🔕 Notification বন্ধ করা হয়েছে। নতুন subscription হলে আবার চালু করা যাবে।");
 }
 
 async function installPushUI() {
@@ -70,7 +49,6 @@ async function installPushUI() {
   const active = !!(await registration.pushManager.getSubscription());
   const old = document.getElementById("pushTools");
   if (old) old.remove();
-
   const box = document.createElement("div");
   box.id = "pushTools";
   box.className = "panel";
@@ -79,13 +57,7 @@ async function installPushUI() {
   main.insertBefore(box, main.firstChild?.nextSibling || main.firstChild);
   const btn = document.getElementById("pushEnable");
   btn.disabled = active;
-  btn.onclick = async () => {
-    btn.disabled = true;
-    try { await registerPushSubscription(true); btn.textContent = "🔔 Notification চালু আছে"; }
-    catch (e) { btn.disabled = false; alert(e.message || "Notification চালু করা যায়নি।"); }
-  };
+  btn.onclick = async () => { btn.disabled = true; try { await registerPushSubscription(true); btn.textContent = "🔔 Notification চালু আছে"; } catch (e) { btn.disabled = false; alert(e.message || "Notification চালু করা যায়নি।"); } };
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  navigator.serviceWorker?.register("./sw.js").then(() => installPushUI()).catch(() => {});
-});
+document.addEventListener("DOMContentLoaded", () => { navigator.serviceWorker?.register("./sw.js").then(() => installPushUI()).catch(() => {}); });
