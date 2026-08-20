@@ -1,36 +1,7 @@
-const CACHE_NAME = "jamaat-app-2026-v4";
-const APP_SHELL = [
-  "./",
-  "./index.html",
-  "./theme.css?v=4",
-  "./news.html",
-  "./admin.html",
-  "./manifest.json"
-];
-
-self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-    ))
-  );
-  self.clients.claim();
-});
-
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-        return response;
-      })
-      .catch(() => caches.match(event.request).then(cached => cached || caches.match("./index.html")))
-  );
-});
+const CACHE_NAME = "jamaat-app-2026-v6";
+const APP_SHELL = ["./","./index.html","./theme.css?v=6","./news.html","./gallery.html","./documents.html","./services.html","./committee.html","./help.html","./admin.html","./live.html","./live-control.html","./manifest.json"];
+self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL).catch(()=>{}))); self.skipWaiting(); });
+self.addEventListener("activate", event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k))))); self.clients.claim(); });
+self.addEventListener("fetch", event => { if(event.request.method!=="GET") return; event.respondWith(fetch(event.request).then(r=>{const c=r.clone(); caches.open(CACHE_NAME).then(x=>x.put(event.request,c)); return r;}).catch(()=>caches.match(event.request).then(r=>r||caches.match("./index.html")))); });
+self.addEventListener("notificationclick", event => { event.notification.close(); event.waitUntil(clients.matchAll({type:"window",includeUncontrolled:true}).then(list=>{for(const c of list){if("focus" in c)return c.focus()} return clients.openWindow("./news.html")})); });
+self.addEventListener("push", event => { let data={title:"JAMAAT APP",body:"নতুন তথ্য প্রকাশিত হয়েছে",url:"./news.html"}; try{if(event.data)data={...data,...event.data.json()}}catch{} event.waitUntil(self.registration.showNotification(data.title,{body:data.body,icon:"./icon-192.png",badge:"./icon-192.png",tag:"jamaat-update",renotify:true,data:{url:data.url},vibrate:[200,100,200],sound:"./notification.mp3"})); });
