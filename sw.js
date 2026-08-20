@@ -1,7 +1,8 @@
-const CACHE_NAME = "jamaat-app-2026-v2";
+const CACHE_NAME = "jamaat-app-2026-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./theme.css?v=4",
   "./news.html",
   "./admin.html",
   "./manifest.json"
