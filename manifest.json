@@ -1,7 +1,7 @@
 {
-  "name": "JAMAAT-APP-2026",
-  "short_name": "JAMAAT APP",
-  "description": "২৮ নং ওয়ার্ডের নিউজ, নোটিশ, গ্যালারি, ডকুমেন্ট, সেবা, কমিটি ও সহায়তা ব্যবস্থাপনার PWA",
+  "name": "SOHOCHOR — সহচর",
+  "short_name": "SOHOCHOR",
+  "description": "দ্বীন, জ্ঞান, সেবা ও সমাজের জন্য একটি সহজ ডিজিটাল প্ল্যাটফর্ম",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
