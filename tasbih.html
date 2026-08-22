@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08783f">
+<title>তসবীহ — SOHOCHOR</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="theme.css?v=6">
+<style>
+body{background:#f3f4f6}.tasbih-wrap{max-width:760px;margin:auto;padding:16px}.tasbih-head{background:#08783f;color:#fff;border-radius:18px;padding:20px;text-align:center;margin-bottom:14px}.tasbih-head h1{margin:0 0 6px}.tasbih-head p{margin:0;opacity:.92}.settings{background:#fff;border-radius:16px;padding:14px;margin-bottom:14px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}.settings label{font-weight:700}.settings select{padding:10px 12px;border:1px solid #ddd;border-radius:10px;font-size:16px}.zikr{background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}.zikr h2{margin:0 0 4px;font-size:24px}.arabic{font-size:24px;line-height:1.8;margin:4px 0;color:#174d35}.counter{font-size:40px;font-weight:800;margin:8px 0}.count-btn{width:100%;min-height:100px;border:0;border-radius:18px;background:#08783f;color:#fff;font-size:25px;font-weight:800;cursor:pointer;touch-action:manipulation}.count-btn:active{transform:scale(.98)}.actions{display:flex;gap:8px;justify-content:center;margin-top:10px}.reset{border:0;border-radius:10px;padding:10px 18px;background:#eee;font-weight:700}.note{font-size:13px;color:#666;margin-top:8px}.back{display:inline-block;margin-bottom:10px;text-decoration:none;font-weight:700;color:#08783f}.bottom{margin-top:14px;text-align:center}.total{font-size:13px;color:#555}
+</style>
+</head>
+<body>
+<main class="tasbih-wrap">
+<a class="back" href="index.html">← হোমে ফিরে যান</a>
+<section class="tasbih-head"><h1>📿 তসবীহ পাঠ</h1><p>SOHOCHOR — সহচর • দ্বীন • জ্ঞান • সেবা • সমাজ</p></section>
+<section class="settings"><label for="target">টার্গেট:</label><select id="target"><option value="33">৩৩ বার</option><option value="100">১০০ বার</option><option value="500">৫০০ বার</option><option value="1000">১০০০ বার</option></select></section>
+<div id="list"></div>
+<div class="bottom"><div class="total" id="dailyTotal">আজকের মোট পাঠ: ০</div><div class="note">টার্গেট পূর্ণ হওয়ার পর আবার চাপলে ফোনে ভাইব্রেশন সতর্কতা হবে।</div></div>
+</main>
+<script>
+const zikrs=[
+ {name:'সুবহানাল্লাহ',arabic:'سُبْحَانَ اللَّهِ'},
+ {name:'আলহামদুলিল্লাহ',arabic:'الْحَمْدُ لِلَّهِ'},
+ {name:'আল্লাহু আকবার',arabic:'اللَّهُ أَكْبَرُ'},
+ {name:'লা ইলাহা ইল্লাল্লাহ',arabic:'لَا إِلٰهَ إِلَّا اللَّهُ'},
+ {name:'আস্তাগফিরুল্লাহ',arabic:'أَسْتَغْفِرُ اللَّهَ'},
+ {name:'দরুদ শরীফ',arabic:'اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ'}
+];
+const key='sohochor_tasbih_v1';
+let state=JSON.parse(localStorage.getItem(key)||'{}');
+const target=document.getElementById('target');
+target.value=state.target||33;
+function vibrate(){if(navigator.vibrate) navigator.vibrate([120,60,120]);}
+function save(){state.target=Number(target.value);localStorage.setItem(key,JSON.stringify(state));}
+function render(){
+ document.getElementById('list').innerHTML=zikrs.map((z,i)=>{const c=Number(state['c'+i]||0);return `<section class="zikr"><h2>${z.name}</h2><div class="arabic">${z.arabic}</div><div class="counter" id="c${i}">${c} / ${target.value}</div><button class="count-btn" onclick="count(${i})">📿 পাঠ করেছি — চাপুন</button><div class="actions"><button class="reset" onclick="resetCount(${i})">↺ রিসেট</button></div></section>`}).join('');
+ updateTotal();
+}
+function count(i){const k='c'+i;const old=Number(state[k]||0);state[k]=old+1;save();document.getElementById(k).textContent=state[k]+' / '+target.value;if(old+1>Number(target.value))vibrate();updateTotal();}
+function resetCount(i){state['c'+i]=0;save();document.getElementById('c'+i).textContent='0 / '+target.value;updateTotal();}
+function updateTotal(){const total=zikrs.reduce((s,_,i)=>s+Number(state['c'+i]||0),0);document.getElementById('dailyTotal').textContent='আজকের মোট পাঠ: '+total.toLocaleString('bn-BD');}
+target.addEventListener('change',()=>{save();render()});
+render();
+</script>
+</body>
+</html>
